@@ -1,0 +1,96 @@
+public class Citizen {
+ private String name;
+ private String passportNo;
+ private boolean prohibitedItem;
+
+ public Citizen(String name, String passport, boolean prohibited) {
+   this.name = name;
+   this.passportNo = passport;
+   this.prohibitedItem = prohibited;
+ }
+
+ public String toString() {
+   return String.format("name: %s \nPassport Number: %s \nHas prohibited items: %b", name, passportNo, prohibitedItem);
+ }
+
+ public boolean hasProhibited() {
+   return this.prohibitedItem;
+ }
+
+ public void setProhibited(boolean a) {
+   this.prohibitedItem = a;
+ }
+
+ public boolean letInCountry() {
+   if (this.prohibitedItem == false) {
+     return true;
+   }
+   return false;
+ }
+}
+
+
+public class Foreigner {
+ private String name;
+ private String nationality;
+ private String passportNo;
+ private boolean prohibitedItem;
+ private boolean visa;
+ private boolean crime;
+
+ public Foreigner(String name, String nat, String passport, boolean prohibited, boolean visa, boolean crime) {
+   this.name = name;
+   this.nationality = nat;
+   this.passportNo = passport;
+   this.prohibitedItem = prohibited;
+   this.visa = visa;
+   this.crime = crime;
+ }
+
+ public String toString() {
+   return String.format("name: %s \nNationality: %s \nPassport Number: %s \nHas prohibited items: %b \nValid Visa: %b \nCriminal Record: %b", name, nationality, passportNo, prohibitedItem, visa, crime);
+ }
+
+ public boolean hasProhibited() {
+   return this.prohibitedItem;
+ }
+
+ public void setProhibited(boolean a) {
+   this.prohibitedItem = a;
+ }
+
+ public boolean hasVisa() {
+   return this.visa;
+ }
+
+ public void setVisa(boolean a) {
+   this.visa = a;
+ }
+
+ public boolean isCriminal() {
+   return this.crime;
+ }
+
+ public void setCrime(boolean a) {
+   this.crime = a;
+ }
+
+ public boolean letInCountry() {
+   if (prohibitedItem == false && visa == true && crime == false) {
+     return true;
+   }
+   return false;
+ }
+}
+
+
+
+class Main {
+ public static void main(String[] args) {
+   Citizen c1 = new Citizen("Dustin Johnson", "PA123456", false);
+   Foreigner f1 = new Foreigner("Jon Rahm", "Spanish", "PA654321", false, true, false);
+   System.out.println(c1);
+   System.out.println(f1);
+   System.out.println(f1.letInCountry());
+ }
+}
